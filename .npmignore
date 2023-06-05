@@ -1,0 +1,22 @@
+# Editor settings
+.vscode
+
+# Linters and dev configurations
+.prettier.json
+.prettierignore
+.eslintrc.js
+codegen.yml
+tsconfig.json
+
+# Peer dependencies
+node_modules
+
+# Project env configuration
+.env
+.env.copy
+
+# Package json lock
+package-lock.json
+
+# Sources
+src

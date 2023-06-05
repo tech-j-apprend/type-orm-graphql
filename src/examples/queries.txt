@@ -1,0 +1,79 @@
+/*
+find({
+  limit: 10,
+  offset: 20,
+  select: { uuid: true, name: true, created_at: true },
+  where: { name: { _in: ["name", "felicidad"] } },
+  orderBy: [
+    { created_at: "desc", rel_task: { layout: "asc" } },
+    { rel_status: { label: "asc" } }
+  ]
+});
+
+deleteSelf({
+  where: { name: { _eq: "name" } },
+  returning: {
+    uuid: true,
+    name: true,
+    schema: true,
+    created_at: true
+  },
+  withAffectedRows: true
+});
+
+update({
+  where: { name: { _eq: "name" } },
+  set: {
+    name: "andres"
+  },
+  append: {
+    schema: {
+      asd: "amigos"
+    }
+  },
+  returning: {
+    uuid: true,
+    name: true,
+    schema: true,
+    created_at: true
+  },
+  withAffectedRows: true
+});
+
+upsert({
+  objects: [
+    {
+      name: "new",
+      owner_uid: "83783176-ff40-11ed-be56-0242ac120002",
+      status: "ff9ead7a-b2f6-4827-b755-bc00e894b94e"
+    },
+    {
+      name: "new",
+      owner_uid: "83783176-ff40-11ed-be56-0242ac120002",
+      status: "ff9ead7a-b2f6-4827-b755-bc00e894b94e"
+    }
+  ],
+  returning: {
+    name: true,
+    status: true,
+    owner_uid: true
+  }
+});
+
+
+const queryResponse = questionaryRepository.find({
+    select: {
+      created_at: true,
+      name: true,
+      rel_status: {
+        key: true,
+        questionaires: {
+          created_at: true
+        }
+      }
+    },
+    aggregate: {
+      count: true
+    }
+  });
+*/

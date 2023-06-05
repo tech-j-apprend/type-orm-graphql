@@ -1,0 +1,44 @@
+name: Docker
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+    paths-ignore:
+      - "**/README.md"
+
+jobs:
+  build:
+    name: "Build App and Container"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Build:checkout"
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm ci
+        env:
+          NPM_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN }}
+      - name: "Generate index files"
+        run: npm run-script generate:barrels
+      - name: "Build package"
+        run: npm run-script build
+
+  publish-github-version:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          registry-url: https://npm.pkg.github.com/
+      - run: npm ci
+        env:
+          NPM_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN }}
+      - run: npm run-script build
+      - run: npm publish --tag alpha
+        env:
+          NPM_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN }}

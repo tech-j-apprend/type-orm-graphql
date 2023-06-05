@@ -1,0 +1,92 @@
+`
+{{ repository_types }}
+
+import { FindParams, find } from "../operations/find-all";
+import { UpdateParams, update } from "../operations/update";
+import { UpsertParams, upsert } from "../operations/upsert";
+import { DeleteParams, deleteSelf } from "../operations/delete";
+import { FindByParams, findBy } from "../operations/find-one";
+import { BaseQuery } from "../types/base-query";
+import { InjectEntityName } from "../decorators/pipe-transform-query";
+import { FlattenToBoolean } from "../types/flatten-to-boolean";
+
+type BaseRepositoryOperations = {
+  entityColumnsWithRelationsSelection: Partial<FlattenToBoolean<Questionaire>>;
+  entityColumns: Questionaire_Select_Column;
+  entitySetInput: Questionaire_Set_Input;
+  entityInserInput: Questionaire_Insert_Input;
+  boolExpression: Questionaire_Bool_Exp;
+  orderByExpressionList: Questionaire_Order_By[];
+  appendSetInput: Questionaire_Append_Input;
+  prependSetInput: Questionaire_Prepend_Input;
+};
+
+export class BaseRepository {
+  private table: string;
+
+  constructor() {
+    this.table = "questionaire";
+  }
+
+  getBaseQuery(): BaseQuery {
+    return {
+      entityName: this.table
+    };
+  }
+
+  @InjectEntityName()
+  findBy(
+    findByParams: FindByParams<
+      BaseRepositoryOperations["boolExpression"],
+      BaseRepositoryOperations["entityColumnsWithRelationsSelection"]
+    >
+  ) {
+    return findBy(findByParams);
+  }
+
+  @InjectEntityName()
+  find(
+    findParams: FindParams<
+      BaseRepositoryOperations["entityColumnsWithRelationsSelection"],
+      BaseRepositoryOperations["boolExpression"],
+      BaseRepositoryOperations["orderByExpressionList"],
+      BaseRepositoryOperations["entityColumns"]
+    >
+  ) {
+    return find(findParams);
+  }
+
+  @InjectEntityName()
+  update(
+    updateParams: UpdateParams<
+      BaseRepositoryOperations["boolExpression"],
+      BaseRepositoryOperations["entitySetInput"],
+      BaseRepositoryOperations["appendSetInput"],
+      BaseRepositoryOperations["prependSetInput"],
+      BaseRepositoryOperations["entityColumns"]
+    >
+  ) {
+    return update(updateParams);
+  }
+
+  @InjectEntityName()
+  upsert(
+    upsertParams: UpsertParams<
+      BaseRepositoryOperations["entityInserInput"],
+      BaseRepositoryOperations["entityColumns"]
+    >
+  ) {
+    return upsert(upsertParams);
+  }
+
+  @InjectEntityName()
+  delete(
+    deleteParams: DeleteParams<
+      BaseRepositoryOperations["boolExpression"],
+      BaseRepositoryOperations["entityColumns"]
+    >
+  ) {
+    return deleteSelf(deleteParams);
+  }
+}
+`;
