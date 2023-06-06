@@ -6,6 +6,7 @@
   "scripts": {
     "build:types": "tsc",
     "build": "npm run build:types && xcopy .\\src\\templates .\\dist\\templates /Y",
+    "build:linux": "npm run build:types && mv ./src/templates ./dist/templates",
     "execute": "ts-node -r tsconfig-paths/register ./src/type-orm-graphql.ts",
     "process:graphql": "nodemon",
     "generate": "graphql-codegen",
