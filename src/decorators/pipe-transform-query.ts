@@ -1,11 +1,7 @@
 import { merge } from "lodash";
 
 export function InjectEntityName() {
-  return function (
-    _target: any,
-    _propertyKey: string,
-    descriptor: PropertyDescriptor
-  ) {
+  return function (_target: any, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
 
     descriptor.value = function <T>(findByParams: T) {
