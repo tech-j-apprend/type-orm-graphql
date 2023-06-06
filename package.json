@@ -1,21 +1,17 @@
 {
   "name": "@tech-j-apprend/type-orm-graphql",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "type": "module",
-  "main": "dist/bundle.cjs.js",
-  "module": "dist/bundle.esm.js",
+  "main": "cjs/index.cjs.js",
+  "module": "esm/index.esm.js",
   "exports": {
-    "require": "./dist/bundle.cjs.js",
-    "import": "./dist/bundle.esm.js"
+    "require": "./cjs/index.cjs.js",
+    "import": "./esm/index.esm.js"
   },
   "scripts": {
     "build:types": "tsc",
     "build": "rollup -c",
-    "build:linux": "npm run build:types && mv ./src/templates ./dist/templates",
-    "execute": "ts-node -r tsconfig-paths/register ./src/type-orm-graphql.ts",
-    "process:graphql": "nodemon",
-    "generate": "graphql-codegen",
     "generate:barrels": "barrelsby --delete -d src -e src/cli/.*\\.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

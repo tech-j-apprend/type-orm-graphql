@@ -21,3 +21,6 @@ package-lock.json
 # Sources
 src
 /.rollup.cache
+
+# Project config loaders
+rollup.config.js
