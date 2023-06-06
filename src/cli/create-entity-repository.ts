@@ -1,9 +1,9 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
-import startCase from "lodash/startCase";
+import { startCase } from "lodash";
 import { Dictionary } from "lodash";
 import { compile } from "handlebars";
-import { defaultConfig } from "../config/default-config.js";
 import { SchemaItemType } from "../types/schema-item-type.js";
+import { HasuraORMConfig } from "../config/default-config.js";
 import * as path from "path";
 
 const readFile = (path: string) => readFileSync(path, "utf8");
@@ -12,21 +12,16 @@ export function createEntityRepository(
   schema: {
     [x: string]: Dictionary<any[]>;
   }[],
-  entityName: string
+  entityName: string,
+  config: HasuraORMConfig
 ) {
-  let config = defaultConfig();
-  const hasuraConfigPath = config["hasuraConfigPath"];
-  try {
-    config = JSON.parse(readFile(hasuraConfigPath));
-  } catch (error) {
-    console.log(
-      `No config file found at ${hasuraConfigPath} , using default config`
-    );
-  }
-
-  const entityRepositoryTemplate = compile(
-    readFile("./src/templates/base-repository.hbs")
+  const relativePath = path.join(
+    __dirname,
+    "..",
+    "templates",
+    "base-repository.hbs"
   );
+  const entityRepositoryTemplate = compile(readFile(relativePath));
   const variablesToResolve = {};
 
   variablesToResolve["base_dependency_path"] = config["baseDependencyPath"];

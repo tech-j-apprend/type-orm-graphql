@@ -1,31 +1,26 @@
 import { existsSync, readFileSync, rmSync } from "fs";
-import { get, groupBy } from "lodash";
+import { get, groupBy, merge } from "lodash";
 import { createEntityRepository } from "./create-entity-repository";
-import { extractEntities } from "../utils/extract-entities";
 import { SchemaItemType } from "../types/schema-item-type";
 import { createTypesAndSchemaFiles } from "../utils/create-types-schema-files";
 import { defaultConfig } from "../config/default-config";
 import * as dotenv from "dotenv";
+import { readHasuraConfig } from "./read-hasura-config";
+import { extractEntities } from "./extract-entities";
 dotenv.config();
 
 const readFile = (path: string) => readFileSync(path, "utf8");
 
 /**
- *  Processes the schema and generates the entities based on the hasura-orm.config.json file
+ * Processes the schema and generates the entities based on the hasura-orm.config.json file
+ * @param config HasuraORMConfig - loads the default configuration by default
  */
 export const processSchema = async (config = defaultConfig()) => {
   if (existsSync(config["exportPath"])) {
     rmSync(config["exportPath"], { recursive: true, force: true });
   }
 
-  const hasuraConfigPath = config["hasuraConfigPath"];
-  try {
-    config = JSON.parse(readFileSync(hasuraConfigPath, "utf-8"));
-  } catch (error) {
-    console.log(
-      `No config file found at ${hasuraConfigPath} , using default config`
-    );
-  }
+  config = merge(config, readHasuraConfig());
 
   await createTypesAndSchemaFiles(config);
 
@@ -53,9 +48,12 @@ export const processSchema = async (config = defaultConfig()) => {
   });
 
   // Transform the objects into entities depending on the excludePatterns and excludeentities
-  const entities = extractEntities(Object.keys(objects[SchemaItemType.OBJECT]));
+  const entities = extractEntities(
+    Object.keys(objects[SchemaItemType.OBJECT]),
+    config
+  );
 
   for (const entity of entities) {
-    createEntityRepository(groupsByKind, entity);
+    createEntityRepository(groupsByKind, entity, config);
   }
 };
