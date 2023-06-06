@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import { program } from "commander";
-import { defaultConfig } from "./config/default-config";
-import { processSchema } from "./processor";
+import { defaultConfig } from "./index";
+import { processSchema } from "./cli/processor";
 
 program
   .version("1.0.0")

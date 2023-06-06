@@ -1,6 +1,7 @@
 # compiled output
 /dist
 /node_modules
+/.rollup.cache
 
 # Logs
 logs

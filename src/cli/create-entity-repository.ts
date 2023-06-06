@@ -1,9 +1,10 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
-import { Dictionary, startCase } from "lodash";
+import startCase from "lodash/startCase";
+import { Dictionary } from "lodash";
 import { compile } from "handlebars";
-import { defaultConfig } from "../config/default-config";
+import { defaultConfig } from "../config/default-config.js";
+import { SchemaItemType } from "../types/schema-item-type.js";
 import * as path from "path";
-import { SchemaItemType } from "../types/schema-item-type";
 
 const readFile = (path: string) => readFileSync(path, "utf8");
 

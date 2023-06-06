@@ -1,10 +1,10 @@
 import { existsSync, readFileSync, rmSync } from "fs";
 import { get, groupBy } from "lodash";
-import { createEntityRepository } from "./utils/create-entity-repository";
-import { extractEntities } from "./utils/extract-entities";
-import { SchemaItemType } from "./types/schema-item-type";
-import { createTypesAndSchemaFiles } from "./utils/create-types-schema-files";
-import { defaultConfig } from "./config/default-config";
+import { createEntityRepository } from "./create-entity-repository";
+import { extractEntities } from "../utils/extract-entities";
+import { SchemaItemType } from "../types/schema-item-type";
+import { createTypesAndSchemaFiles } from "../utils/create-types-schema-files";
+import { defaultConfig } from "../config/default-config";
 import * as dotenv from "dotenv";
 dotenv.config();
 
@@ -59,6 +59,3 @@ export const processSchema = async (config = defaultConfig()) => {
     createEntityRepository(groupsByKind, entity);
   }
 };
-
-processSchema();
-//processSchema();
