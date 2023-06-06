@@ -54,7 +54,7 @@ export default [
             }
         })],
         output: {
-          file: `esm/index.esm.ts`,
+          file: `esm/index.esm.d.ts`,
           format: 'es',
         },
       },
@@ -67,7 +67,7 @@ export default [
             }
         })],
         output: {
-          file: `cjs/index.cjs.ts`,
+          file: `cjs/index.cjs.d.ts`,
           format: 'es',
         },
       },
