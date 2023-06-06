@@ -14,7 +14,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "tran": "node dist/type-orm-graphql.js"
+    "cli": "./dist/type-orm-graphql.js"
   },
   "keywords": [],
   "author": "",
