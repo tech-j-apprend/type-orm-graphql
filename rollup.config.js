@@ -67,7 +67,7 @@ export default [
             }
         })],
         output: {
-          file: `cjs/index.d.ts`,
+          file: `cjs/index.cjs.d.ts`,
           format: 'es',
         },
       },
