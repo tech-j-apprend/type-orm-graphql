@@ -22,7 +22,7 @@ jobs:
       - name: "Generate index files"
         run: npm run-script generate:barrels
       - name: "Build package"
-        run: npm run-script build:linux
+        run: npm run-script build
       - run: npm publish --tag alpha
         env:
           NPM_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN }}
