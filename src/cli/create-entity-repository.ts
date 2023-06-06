@@ -19,7 +19,7 @@ export function createEntityRepository(
     __dirname,
     "..",
     "templates",
-    "base-repository.hbs"
+    config["templateName"]
   );
   const entityRepositoryTemplate = compile(readFile(relativePath));
   const variablesToResolve = {};

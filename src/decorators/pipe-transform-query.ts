@@ -6,9 +6,10 @@ type TypedMethodDecorator = <T extends Function>(
   descriptor: TypedPropertyDescriptor<T>
 ) => any;
 
-export const InjectEntityName: TypedMethodDecorator = <T>() => {
-  return function (
+export const InjectEntityName = (): TypedMethodDecorator => {
+  return function <T>(
     _target: Object,
+    propertyKey: string | symbol,
     descriptor: TypedPropertyDescriptor<T> | void
   ) {
     const originalMethod = descriptor["value"];

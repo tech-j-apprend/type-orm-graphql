@@ -5,7 +5,7 @@ import { defaultConfig } from "./index";
 import { processSchema } from "./cli/processor";
 
 program
-  .version("1.0.0")
+  .version("1.0.5")
   .description(
     "TypeOrmGraphql CLI tool for processing the schema and generating entities"
   )
@@ -57,6 +57,11 @@ program
     "Comma-separated list of exclude patterns",
     defaultConfig().excludePatterns.join(",")
   )
+  .option(
+    "-t, --template <path>",
+    "Template name",
+    defaultConfig().templateName
+  )
   .action(async (options) => {
     try {
       const config = defaultConfig();
@@ -68,6 +73,7 @@ program
       config.typesConfigPath =
         options.typesConfigPath || config.typesConfigPath;
       config.exportPath = options.exportPath || config.exportPath;
+      config.templateName = options.templateName || config.templateName;
       config.excludeEntities = options.excludeEntities
         ? options.excludeEntities.split(",")
         : config.excludeEntities;

@@ -8,6 +8,7 @@ export type HasuraORMConfig = {
       }
     | false;
   hasuraConfigPath?: string;
+  templateName?: string;
   typesConfigPath?: string;
   exportPath?: string;
   excludeEntities?: string[];
@@ -24,6 +25,7 @@ export const defaultConfig = (): HasuraORMConfig => ({
   hasuraConfigPath: "hasura-orm.config.json",
   exportPath: "./src/generated/hasura-orm",
   typesConfigPath: "./src/generated/hasura-orm/graphql.ts",
+  templateName: "base-repository.hbs",
   excludeEntities: [],
   excludePatterns: [
     "query_root",
