@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "NodeNext",
     "moduleResolution": "node",
     "declaration": true,
     "removeComments": true,
@@ -13,6 +13,7 @@
     "outDir": "./dist",
     "sourceRoot": "./src",
     "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
     "skipLibCheck": true,
     "strictNullChecks": false,
     "noImplicitAny": false,

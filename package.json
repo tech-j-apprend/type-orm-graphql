@@ -2,10 +2,16 @@
   "name": "@tech-j-apprend/type-orm-graphql",
   "version": "1.0.5",
   "description": "",
-  "main": "dist/index.js",
+  "type": "module",
+  "main": "dist/bundle.cjs.js",
+  "module": "dist/bundle.esm.js",
+  "exports": {
+    "require": "./dist/bundle.cjs.js",
+    "import": "./dist/bundle.esm.js"
+  },
   "scripts": {
     "build:types": "tsc",
-    "build": "npm run build:types && xcopy .\\src\\templates .\\dist\\templates /Y",
+    "build": "rollup -c",
     "build:linux": "npm run build:types && mv ./src/templates ./dist/templates",
     "execute": "ts-node -r tsconfig-paths/register ./src/type-orm-graphql.ts",
     "process:graphql": "nodemon",
@@ -13,27 +19,15 @@
     "generate:barrels": "barrelsby --delete -d src -e src/cli/.*\\.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin": {
-    "cli": "./dist/cli.js"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@graphql-codegen/cli": "^4.0.0",
-    "@graphql-codegen/named-operations-object": "^2.3.1",
-    "@graphql-codegen/typescript-operations": "^4.0.0",
-    "@types/lodash": "^4.14.195",
     "barrelsby": "^2.8.0",
-    "chevrotain": "^10.5.0",
-    "commander": "^10.0.1",
     "dotenv": "^16.1.4",
     "graphql": "^16.6.0",
     "handlebars": "^4.7.7",
     "lodash": "^4.17.21",
-    "node-fetch": "^3.2.6",
-    "nodemon": "^2.0.22",
-    "path": "^0.12.7",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.3"
   },
@@ -44,7 +38,14 @@
     "@babel/preset-typescript": "^7.21.5",
     "@graphql-codegen/introspection": "^4.0.0",
     "@graphql-codegen/schema-ast": "^4.0.0",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@types/lodash": "^4.14.195",
     "@types/node": "^20.2.5",
+    "nodemon": "^2.0.22",
+    "rollup": "^3.23.1",
+    "rollup-plugin-dts": "^5.3.0",
+    "rollup-plugin-esbuild": "^5.0.0",
     "tsconfig-paths": "^4.2.0"
   }
 }
