@@ -17,7 +17,7 @@ export default [
         ],
         output: [
           {
-            file: `cjs/index.cjs.js`,
+            file: `cjs/index.cjs`,
             format: 'cjs',
             sourcemap: true,
             exports: 'named',
@@ -67,7 +67,7 @@ export default [
             }
         })],
         output: {
-          file: `cjs/index.cjs.d.ts`,
+          file: `cjs/index.d.ts`,
           format: 'es',
         },
       },

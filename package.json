@@ -1,12 +1,12 @@
 {
   "name": "@tech-j-apprend/type-orm-graphql",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "",
   "type": "module",
-  "main": "cjs/index.cjs.js",
+  "main": "cjs/index.cjs",
   "module": "esm/index.esm.js",
   "exports": {
-    "require": "./cjs/index.cjs.js",
+    "require": "./cjs/index.cjs",
     "import": "./esm/index.esm.js"
   },
   "scripts": {
