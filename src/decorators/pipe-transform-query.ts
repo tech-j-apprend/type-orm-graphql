@@ -1,10 +1,19 @@
 import { merge } from "lodash";
 
-export function InjectEntityName() {
-  return function (_target: any, descriptor: PropertyDescriptor) {
-    const originalMethod = descriptor.value;
+type TypedMethodDecorator = <T extends Function>(
+  target: Object,
+  propertyKey: string | symbol,
+  descriptor: TypedPropertyDescriptor<T>
+) => any;
 
-    descriptor.value = function <T>(findByParams: T) {
+export const InjectEntityName: TypedMethodDecorator = <T>() => {
+  return function (
+    _target: Object,
+    descriptor: TypedPropertyDescriptor<T> | void
+  ) {
+    const originalMethod = descriptor["value"];
+
+    descriptor["value"] = function <T>(findByParams: T) {
       const baseQuery = this.getBaseQuery();
       const queryTransformed = merge(baseQuery, findByParams);
 
@@ -13,4 +22,4 @@ export function InjectEntityName() {
 
     return descriptor;
   };
-}
+};
