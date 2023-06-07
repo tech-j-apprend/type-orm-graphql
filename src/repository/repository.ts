@@ -5,6 +5,7 @@ import { SuscribeParams } from "../operations/suscribe-all";
 import { SuscribeByParams } from "../operations/suscribe-one";
 import { UpdateParams } from "../operations/update";
 import { UpsertParams } from "../operations/upsert";
+import { BaseQuery } from "../types/base-query";
 
 export type OperationsDictionary = {
   entityColumnsWithRelationsSelection: unknown;
@@ -19,6 +20,8 @@ export type OperationsDictionary = {
 };
 
 export abstract class Repository<Operations extends OperationsDictionary> {
+  abstract getBaseQuery(): BaseQuery;
+
   abstract findBy(
     findByParams: FindByParams<
       Operations["boolExpression"],
