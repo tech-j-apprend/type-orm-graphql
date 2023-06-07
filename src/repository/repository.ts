@@ -10,7 +10,7 @@ export type OperationsDictionary = {
   entityColumnsWithRelationsSelection: unknown;
   entityColumns: string | number | symbol;
   entitySetInput: unknown;
-  entityInsertInput: unknown;
+  entityInserInput: unknown;
   boolExpression: unknown;
   orderByExpressionList: unknown;
   scalarType: unknown;
@@ -49,7 +49,7 @@ export abstract class Repository<Operations extends OperationsDictionary> {
 
   abstract upsert(
     upsertParams: UpsertParams<
-      Operations["entityInsertInput"],
+      Operations["entityInserInput"],
       Operations["entityColumns"]
     >
   );

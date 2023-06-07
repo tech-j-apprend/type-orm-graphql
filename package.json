@@ -1,6 +1,6 @@
 {
   "name": "@tech-j-apprend/type-orm-graphql",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "",
   "type": "module",
   "main": "cjs/index.cjs",
