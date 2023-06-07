@@ -11,6 +11,7 @@ export * from "./operations/suscribe-all";
 export * from "./operations/suscribe-one";
 export * from "./operations/update";
 export * from "./operations/upsert";
+export * from "./repository/repository";
 export * from "./types/aggregate";
 export * from "./types/base-query";
 export * from "./types/flatten-to-boolean";
