@@ -22,9 +22,9 @@ export const upsert = <T, K extends string | number | symbol>({
   returning,
   withAffectedRows,
   entityName,
-  queryName = `upsert${startCase(entityName).replace(/\s/g, "")}`
+  queryName = `insert${startCase(entityName).replace(/\s/g, "")}`
 }: UpsertParams<T, K>) => {
-  const entityOperation = `upsert_${entityName}`;
+  const entityOperation = `insert_${entityName}`;
   const selectionNodes: SelectionNode[] = Object.keys(returning).map(
     (selection) => ({
       kind: Kind.FIELD,
