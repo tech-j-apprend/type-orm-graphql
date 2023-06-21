@@ -92,9 +92,7 @@ export function find<T, K, M, N extends string | number | symbol, S>(
     aggregate !== undefined
       ? createAggregateNodes<N>(aggregate, entityName, [
           whereNodes,
-          orderByNodes,
-          limitNode,
-          offsetNode
+          orderByNodes
         ])
       : undefined;
 
