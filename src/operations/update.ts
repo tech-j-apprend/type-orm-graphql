@@ -8,7 +8,7 @@ import {
   print
 } from "graphql";
 import { processArgument } from "../utils/process-argument";
-import { capitalize, startCase } from "lodash";
+import { startCase } from "lodash";
 import { BaseQuery } from "../types/base-query";
 import { createVariables } from "../utils/create-variables";
 import { QueryVariables } from "../types/query-variables";

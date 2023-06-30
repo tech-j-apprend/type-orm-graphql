@@ -106,6 +106,7 @@ export const processArgument = ({
               },
               value: createNodeValue(primitiveValue, enumValues)
             });
+            processedFields.push(key); // Mark field as processed
           }
         }
 

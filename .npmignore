@@ -25,3 +25,5 @@ src
 
 # Project config loaders
 rollup.config.js
+.nodemon.json
+.prettier.rc
