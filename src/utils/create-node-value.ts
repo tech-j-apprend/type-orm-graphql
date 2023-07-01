@@ -1,7 +1,7 @@
 import { Kind, ValueNode } from "graphql";
 
 export const createNodeValue = (
-  value: string | number | boolean | undefined,
+  value: string | number | boolean | undefined | null,
   enumValues = []
 ): ValueNode | undefined => {
   if (typeof value === "number") {
@@ -34,8 +34,10 @@ export const createNodeValue = (
       kind: Kind.BOOLEAN,
       value
     };
-  } else if (typeof value === "undefined") {
-    return undefined;
+  } else if (typeof value === "undefined" || value === null) {
+    return {
+      kind: Kind.NULL
+    };
   }
 
   return undefined;

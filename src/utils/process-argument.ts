@@ -78,6 +78,7 @@ export const processArgument = ({
             arrayNode.value["fields"].push(...arrayNodeFields);
           } else if (
             typeof whereConditionMapped[key] === "object" &&
+            whereConditionMapped[key] !== null && // Fix typeof null === "object"
             !processedFields.includes(key)
           ) {
             const condition = whereConditionMapped[key];
