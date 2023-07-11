@@ -58,10 +58,20 @@ export const processCondition = (condition: any, enumValues = []) => {
             },
             value: {
               kind: Kind.LIST,
-              values: value.map((arrayItem) => ({
-                kind: Kind.STRING,
-                value: arrayItem
-              }))
+              values: value.map((arrayItem) => {
+                if (
+                  typeof arrayItem === "object" &&
+                  !Array.isArray(arrayItem) &&
+                  arrayItem !== null
+                ) {
+                  return {
+                    kind: Kind.OBJECT,
+                    fields: processCondition(arrayItem)
+                  };
+                }
+
+                return createNodeValue(arrayItem);
+              })
             }
           };
         } else {
