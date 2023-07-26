@@ -8,8 +8,8 @@ import {
   print
 } from "graphql";
 import { processArgument } from "../utils/process-argument";
-import { capitalize, startCase } from "lodash";
 import { BaseQuery } from "../types/base-query";
+import { toStartCase } from "../utils/start-case";
 
 export type UpsertParams<T, K extends string | number | symbol> = BaseQuery & {
   objects: T[] | T;
@@ -22,7 +22,7 @@ export const upsert = <T, K extends string | number | symbol>({
   returning,
   withAffectedRows,
   entityName,
-  queryName = `insert${startCase(entityName).replace(/\s/g, "")}`
+  queryName = `insert${toStartCase(entityName).replace(/\s/g, "")}`
 }: UpsertParams<T, K>) => {
   const entityOperation = `insert_${entityName}`;
   const selectionNodes: SelectionNode[] = Object.keys(returning).map(

@@ -1,4 +1,3 @@
-import { startCase } from "lodash";
 import { BaseQuery } from "../types/base-query";
 import { QueryVariables } from "../types/query-variables";
 import {
@@ -11,6 +10,7 @@ import {
 import { processSelection } from "../utils/process-selection";
 import { createVariables } from "../utils/create-variables";
 import { createNodeValue } from "../utils/create-node-value";
+import { toStartCase } from "../utils/start-case";
 
 export type SuscribeByParams<T, K> = BaseQuery &
   QueryVariables<K> & {
@@ -23,7 +23,7 @@ export function suscribeBy<T, K>(suscribeBy: SuscribeByParams<T, K>) {
     select,
     entityName,
     uuid,
-    queryName = `suscribeByUuid${startCase(entityName).replace(/\s/g, "")}`,
+    queryName = `suscribeByUuid${toStartCase(entityName).replace(/\s/g, "")}`,
     variables
   } = suscribeBy;
 

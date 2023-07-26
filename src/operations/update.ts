@@ -8,10 +8,10 @@ import {
   print
 } from "graphql";
 import { processArgument } from "../utils/process-argument";
-import { startCase } from "lodash";
 import { BaseQuery } from "../types/base-query";
 import { createVariables } from "../utils/create-variables";
 import { QueryVariables } from "../types/query-variables";
+import { toStartCase } from "../utils/start-case";
 
 export type UpdateParams<
   T,
@@ -38,7 +38,7 @@ export const update = <T, K, M, N, S extends string | number | symbol, L>({
   prepend,
   withAffectedRows = false,
   entityName,
-  queryName = `update${startCase(entityName).replace(/\s/g, "")}`,
+  queryName = `update${toStartCase(entityName).replace(/\s/g, "")}`,
   variables
 }: UpdateParams<T, K, M, N, S, L>) => {
   const entityOperation = `update_${entityName}`;

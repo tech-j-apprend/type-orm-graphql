@@ -8,10 +8,10 @@ import {
   print
 } from "graphql";
 import { processArgument } from "../utils/process-argument";
-import { capitalize, startCase } from "lodash";
 import { BaseQuery } from "../types/base-query";
 import { QueryVariables } from "../types/query-variables";
 import { createVariables } from "../utils/create-variables";
+import { toStartCase } from "../utils/start-case";
 
 export type DeleteParams<T, K extends string | number | symbol, M> = BaseQuery &
   QueryVariables<M> & {
@@ -25,7 +25,7 @@ export const deleteSelf = <T, K extends string | number | symbol, M>({
   returning = {},
   withAffectedRows = false,
   entityName,
-  queryName = `delete${startCase(entityName).replace(/\s/g, "")}`,
+  queryName = `delete${toStartCase(entityName).replace(/\s/g, "")}`,
   variables
 }: DeleteParams<T, K, M>) => {
   const entityOperation = `delete_${entityName}`;

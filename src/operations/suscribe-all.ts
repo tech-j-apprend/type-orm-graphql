@@ -1,4 +1,3 @@
-import { startCase } from "lodash";
 import { BaseQuery } from "../types/base-query";
 import { QueryVariables } from "../types/query-variables";
 import {
@@ -13,6 +12,7 @@ import { processSelection } from "../utils/process-selection";
 import { createVariables } from "../utils/create-variables";
 import { processArgument } from "../utils/process-argument";
 import { createPrimitiveArgumentNode } from "../utils/create-primitive-argument-node";
+import { toStartCase } from "../utils/start-case";
 
 export type SuscribeParams<T, K, M, S> = BaseQuery &
   QueryVariables<S> & {
@@ -32,7 +32,7 @@ export function suscribe<T, K, M, S>(suscribeBy: SuscribeParams<T, K, M, S>) {
     orderBy,
     entityName,
     variables,
-    queryName = `suscribeAll${startCase(entityName).replace(/\s/g, "")}`
+    queryName = `suscribeAll${toStartCase(entityName).replace(/\s/g, "")}`
   } = suscribeBy;
 
   const selectionNodes: SelectionNode[] = processSelection({

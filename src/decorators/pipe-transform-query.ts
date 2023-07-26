@@ -1,4 +1,4 @@
-import { merge } from "lodash";
+import { mergeObjects } from "../utils/merge-objects";
 
 type TypedMethodDecorator = <T extends Function>(
   target: Object,
@@ -14,9 +14,9 @@ export const InjectEntityName = (): TypedMethodDecorator => {
   ) {
     const originalMethod = descriptor["value"];
 
-    descriptor["value"] = function <T>(findByParams: T) {
+    descriptor["value"] = function <T>(params: T) {
       const baseQuery = this.getBaseQuery();
-      const queryTransformed = merge(baseQuery, findByParams);
+      const queryTransformed = mergeObjects(baseQuery, params);
 
       return originalMethod.call(this, queryTransformed);
     };

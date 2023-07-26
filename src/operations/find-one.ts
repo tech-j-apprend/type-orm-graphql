@@ -7,11 +7,11 @@ import {
   print
 } from "graphql";
 import { processArgument } from "../utils/process-argument";
-import { capitalize, startCase } from "lodash";
 import { BaseQuery } from "../types/base-query";
 import { QueryVariables } from "../types/query-variables";
 import { createVariables } from "../utils/create-variables";
 import { processSelection } from "../utils/process-selection";
+import { toStartCase } from "../utils/start-case";
 
 export type FindByParams<T, K, M> = BaseQuery &
   QueryVariables<M> & {
@@ -24,7 +24,7 @@ export function findBy<T, K, M>(findByParams: FindByParams<T, K, M>) {
     where,
     select,
     entityName,
-    queryName = `findBy${startCase(entityName).replace(/\s/g, "")}`,
+    queryName = `findBy${toStartCase(entityName).replace(/\s/g, "")}`,
     variables
   } = findByParams;
 
