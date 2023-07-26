@@ -23,7 +23,7 @@ export default [
             exports: 'named',
           },
         ],
-        external: ['@graphql-codegen/cli', 'graphql', 'lodash']
+        external: ['@graphql-codegen/cli', 'graphql']
     }, {
         input: `src/index.ts`,
         plugins: [
@@ -43,7 +43,7 @@ export default [
             exports: 'named',
           },
         ],
-        external: ['graphql', 'lodash']
+        external: ['@graphql-codegen/cli', 'graphql']
     },
     {
         input: `src/index.ts`,

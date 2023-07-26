@@ -10,12 +10,12 @@ import {
 import { processArgument } from "../utils/process-argument";
 import { createPrimitiveArgumentNode } from "../utils/create-primitive-argument-node";
 import { BaseQuery } from "../types/base-query";
-import { capitalize, startCase } from "lodash";
 import { QueryVariables } from "../types/query-variables";
 import { createVariables } from "../utils/create-variables";
 import { processSelection } from "../utils/process-selection";
 import { AggregateExpression } from "../types/aggregate";
 import { createAggregateNodes } from "../utils/create-aggregate-nodes";
+import { toStartCase } from "../utils/start-case";
 
 export type FindParams<
   T,
@@ -45,7 +45,7 @@ export function find<T, K, M, N extends string | number | symbol, S>(
     entityName,
     variables,
     aggregate,
-    queryName = `findAll${startCase(entityName).replace(/\s/g, "")}`
+    queryName = `findAll${toStartCase(entityName).replace(/\s/g, "")}`
   } = findParams;
 
   const selectionNodes: SelectionNode[] = processSelection({

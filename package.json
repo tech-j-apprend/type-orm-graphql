@@ -1,10 +1,11 @@
 {
   "name": "@tech-j-apprend/type-orm-graphql",
-  "version": "1.2.8",
-  "description": "",
+  "version": "1.3.0",
+  "description": "A DataMapper for Graphql, ",
   "type": "module",
   "main": "cjs/index.cjs",
   "module": "esm/index.esm.js",
+  "license": "MIT",
   "exports": {
     "require": "./cjs/index.cjs",
     "import": "./esm/index.esm.js"
@@ -17,14 +18,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Andrés Muñoz",
+    "email": "tecnologiainovamm@gmail.com"
+  },
   "dependencies": {
     "barrelsby": "^2.8.0",
     "dotenv": "^16.1.4",
     "graphql": "^16.6.0",
     "handlebars": "^4.7.7",
-    "lodash": "^4.17.21",
     "typescript": "^5.1.3"
   },
   "devDependencies": {
@@ -36,7 +38,6 @@
     "@graphql-codegen/schema-ast": "^4.0.0",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^25.0.0",
-    "@types/lodash": "^4.14.195",
     "@types/node": "^20.2.5",
     "nodemon": "^2.0.22",
     "rollup": "^3.23.1",
