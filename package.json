@@ -1,6 +1,6 @@
 {
   "name": "@tech-j-apprend/type-orm-graphql",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "A DataMapper for Graphql, works as an agnostic dependency to create graphql from an schema",
   "type": "module",
   "main": "cjs/index.cjs",

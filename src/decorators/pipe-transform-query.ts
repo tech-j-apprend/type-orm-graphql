@@ -1,5 +1,3 @@
-import { mergeObjects } from "../utils/merge-objects";
-
 type TypedMethodDecorator = <T extends Function>(
   target: Object,
   propertyKey: string | symbol,
@@ -16,7 +14,7 @@ export const InjectEntityName = (): TypedMethodDecorator => {
 
     descriptor["value"] = function <T>(params: T) {
       const baseQuery = this.getBaseQuery();
-      const queryTransformed = mergeObjects(baseQuery, params);
+      const queryTransformed = Object.assign({}, baseQuery, params);
 
       return originalMethod.call(this, queryTransformed);
     };

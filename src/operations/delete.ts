@@ -24,7 +24,7 @@ export const deleteSelf = <T, K extends string | number | symbol, M>({
   where,
   returning = {},
   withAffectedRows = false,
-  entityName,
+  entityName = "",
   queryName = `delete${toStartCase(entityName).replace(/\s/g, "")}`,
   variables
 }: DeleteParams<T, K, M>) => {

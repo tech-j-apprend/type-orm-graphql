@@ -37,7 +37,7 @@ export const update = <T, K, M, N, S extends string | number | symbol, L>({
   append,
   prepend,
   withAffectedRows = false,
-  entityName,
+  entityName = "",
   queryName = `update${toStartCase(entityName).replace(/\s/g, "")}`,
   variables
 }: UpdateParams<T, K, M, N, S, L>) => {

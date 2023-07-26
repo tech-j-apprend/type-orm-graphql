@@ -23,7 +23,7 @@ export function findBy<T, K, M>(findByParams: FindByParams<T, K, M>) {
   const {
     where,
     select,
-    entityName,
+    entityName = "",
     queryName = `findBy${toStartCase(entityName).replace(/\s/g, "")}`,
     variables
   } = findByParams;

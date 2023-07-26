@@ -21,7 +21,7 @@ export type SuscribeByParams<T, K> = BaseQuery &
 export function suscribeBy<T, K>(suscribeBy: SuscribeByParams<T, K>) {
   const {
     select,
-    entityName,
+    entityName = "",
     uuid,
     queryName = `suscribeByUuid${toStartCase(entityName).replace(/\s/g, "")}`,
     variables

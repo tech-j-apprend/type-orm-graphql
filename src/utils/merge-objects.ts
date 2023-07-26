@@ -10,7 +10,10 @@ export function mergeObjects(target, ...sources) {
 
     for (const key in source) {
       if (source.hasOwnProperty(key)) {
-        if (typeof source[key] === "object" && source[key] !== null) {
+        if (Array.isArray(source[key])) {
+          // Handle arrays separately by creating a new array and copying its elements
+          target[key] = source[key].slice();
+        } else if (typeof source[key] === "object" && source[key] !== null) {
           // Recursively merge nested objects
           if (
             !target[key] ||

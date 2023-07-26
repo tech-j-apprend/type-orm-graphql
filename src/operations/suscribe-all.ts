@@ -30,7 +30,7 @@ export function suscribe<T, K, M, S>(suscribeBy: SuscribeParams<T, K, M, S>) {
     offset,
     where,
     orderBy,
-    entityName,
+    entityName = "",
     variables,
     queryName = `suscribeAll${toStartCase(entityName).replace(/\s/g, "")}`
   } = suscribeBy;

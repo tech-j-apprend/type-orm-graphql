@@ -21,7 +21,7 @@ export const upsert = <T, K extends string | number | symbol>({
   objects,
   returning,
   withAffectedRows,
-  entityName,
+  entityName = "",
   queryName = `insert${toStartCase(entityName).replace(/\s/g, "")}`
 }: UpsertParams<T, K>) => {
   const entityOperation = `insert_${entityName}`;

@@ -42,9 +42,9 @@ export function find<T, K, M, N extends string | number | symbol, S>(
     offset,
     where,
     orderBy,
-    entityName,
     variables,
     aggregate,
+    entityName = "",
     queryName = `findAll${toStartCase(entityName).replace(/\s/g, "")}`
   } = findParams;
 
