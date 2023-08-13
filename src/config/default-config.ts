@@ -19,7 +19,7 @@ export const defaultConfig = (): HasuraORMConfig => ({
   createSchemaAndTypes: {
     graphqlUrl: process.env.HASURA_GRAPHQL_URL,
     headers: {
-      hasuraAdminSecret: process.env.HASURA_GRAPHQL_ADMIN_SECRET
+      'x-hasura-admin-secret': process.env.HASURA_GRAPHQL_ADMIN_SECRET
     }
   },
   baseDependencyPath: "@tech-j-apprend/type-orm-graphql", //"../../../index",
